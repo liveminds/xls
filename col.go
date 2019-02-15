@@ -54,7 +54,7 @@ func (xf *XfRk) String(wb *WorkBook) string {
 		fNo := wb.Xfs[idx].formatNo()
 		if fNo >= 164 { // user defined format
 			if formatter := wb.Formats[fNo]; formatter != nil {
-				if strings.Contains(formatter.str, "#") || strings.Contains(formatter.str, ".00") {
+				if strings.Contains(formatter.str, "#") || strings.Contains(formatter.str, ".00") || strings.EqualFold(formatter.str, "General") {
 					//If format contains # or .00 then this is a number
 					return xf.Rk.String()
 				} else {
